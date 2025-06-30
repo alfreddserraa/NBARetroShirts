@@ -1,0 +1,607 @@
+</style>
+</head>
+<body>
+    <!-- Header Fijo -->
+    <header class="header">
+        <div class="top-bar">
+            <div class="contact-info">
+                <span>629 46 46 12</span>
+                <span>santcugatpadelclub@gmail.com</span>
+            </div>
+            <div class="social-icon">📷</div>
+        </div>
+        <nav class="nav-bar">
+            <div class="logo">SP</div>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#club">Club</a></li>
+                <li><a href="#escuela">Escuela</a></li>
+                <li><a href="#reservas">Reservas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <a href="#reserva" class="cta-button">Reserva pista</a>
+        </nav>
+    </header>
+
+    <!-- Sección Hero -->
+    <section class="hero-section" id="inicio">
+        <div class="hero-content">
+            <h1>Santcu Padel</h1>
+        </div>
+        <div class="building-visual"></div>
+        <div class="building-logo">SANTCU<br>PADEL</div>
+    </section>
+
+    <!-- Sección de Servicios -->
+    <section class="services-section">
+        <div class="service-card padel-service">
+            <div class="service-content">
+                <h2>PADEL</h2>
+                <p>Alquiler de pistas</p>
+                <a href="#padel" class="service-link">Descubre más</a>
+            </div>
+        </div>
+        <div class="service-card club-service">
+            <div class="service-content">
+                <h2>EL CLUB</h2>
+                <p>Torneos</p>
+                <a href="#club" class="service-link">Únete ahora</a>
+            </div>
+        </div>
+        <div class="service-card restaurant-service">
+            <div class="service-content">
+                <h2>BAR/RESTAURANTE</h2>
+                <p>Date una pausa</p>
+                <a href="#restaurante" class="service-link">Ver menú</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Información -->
+    <section class="info-section">
+        <div class="info-content">
+            <h2>Vive la experiencia Santcu Padel</h2>
+            <p>El mejor club de pádel de Sant Cugat del Vallès</p>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>Instalaciones Premium</h3>
+                    <p>Pistas de última generación con iluminación LED y césped artificial de alta calidad</p>
+                </div>
+                <div class="info-item">
+                    <h3>Escuela Profesional</h3>
+                    <p>Clases para todos los niveles con entrenadores certificados</p>
+                </div>
+                <div class="info-item">
+                    <h3>Torneos Semanales</h3>
+                    <p>Competiciones regulares para jugadores de todos los niveles</p>
+                </div>
+                <div class="info-item">
+                    <h3>Pro Shop</h3>
+                    <p>Todo el equipamiento que necesitas para tu juego</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#aviso-legal">Aviso Legal</a>
+                <a href="#privacidad">Política de Privacidad</a>
+                <a href="#cookies">Cookies</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Santcu Padel. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/34629464612" class="whatsapp-float" target="_blank"></a>
+
+    <script>
+        // Smooth scrolling para los enlaces de navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Efecto parallax en la sección hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.building-visual');
+            const logo = document.querySelector('.building-logo');
+            
+            if (parallax) {
+                parallax.style.transform = `translateY(${-50 + scrolled * 0.1}%)`;
+            }
+            if (logo) {
+                logo.style.transform = `translateY(${scrolled * -0.2}px)`;
+            }
+        });
+
+        // Animación al hacer scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos para animación
+        document.querySelectorAll('.service-card, .info-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Cambiar el estilo del header al hacer scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(0, 0, 0, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.5)';
+            } else {
+                header.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santcu Padel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header fijo */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px;
+            font-size: 14px;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, #4a90e2 0%, #1a5490 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: rotate(360deg);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #4a90e2;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background-color: #fff;
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #4a90e2;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(74, 144, 226, 0.3);
+        }
+
+        /* Sección Hero */
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect fill="%234a90e2" width="1920" height="1080"/><path fill="%233a7fd2" d="M0 540L1920 0v540z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding-left: 80px;
+            margin-top: 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content h1 {
+            font-size: 120px;
+            font-weight: 300;
+            line-height: 1;
+            margin-bottom: 20px;
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .building-visual {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60%;
+            height: 80%;
+            background: linear-gradient(135deg, #5a9fd4 0%, #3a7fd2 50%, #2a6fc2 100%);
+            clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+            opacity: 0.9;
+        }
+
+        .building-logo {
+            position: absolute;
+            right: 35%;
+            top: 30%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4a90e2;
+            font-size: 24px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        /* Sección de servicios */
+        .services-section {
+            min-height: 100vh;
+            background-color: #000;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        .service-card {
+            position: relative;
+            height: 60vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 100%);
+            z-index: 1;
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .service-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-content h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .service-content p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .service-link {
+            color: #4a90e2;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s ease;
+        }
+
+        .service-link:hover {
+            gap: 15px;
+        }
+
+        .service-link::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+
+        .service-link:hover::after {
+            transform: translateX(5px);
+        }
+
+        /* Estilos para las imágenes de fondo */
+        .padel-service {
+            background-image: linear-gradient(to right, #1a5490, #4a90e2);
+        }
+
+        .club-service {
+            background-image: linear-gradient(to right, #2a6fc2, #5a9fd4);
+        }
+
+        .restaurant-service {
+            background-image: linear-gradient(to right, #3a7fd2, #5a9fd4);
+        }
+
+        /* Animaciones */
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 60px;
+            }
+
+            .services-section {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                height: 80vh;
+            }
+
+            .hero-section {
+                padding-left: 40px;
+            }
+
+            .building-visual {
+                width: 100%;
+                clip-path: none;
+            }
+        }
+
+        /* Sección de información adicional */
+        .info-section {
+            background-color: #111;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .info-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .info-content h2 {
+            font-size: 48px;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .info-item {
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            background-color: rgba(74, 144, 226, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .info-item h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #4a90e2;
+        }
+
+        .info-item p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #000;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            opacity: 0.5;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        /* Botón flotante de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .whatsapp-float::before {
+            content: '💬';
+            font-size: 28px;
+        }
