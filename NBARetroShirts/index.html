@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopFlex - Pasión por el Fútbol</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        /* Header fijo */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: #1a1a1a;
+            padding: 0;
+        }
+
+        .top-nav {
+            background-color: #333;
+            padding: 8px 0;
+            font-size: 13px;
+        }
+
+        .top-nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .top-nav a {
+            color: #ccc;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: color 0.3s;
+        }
+
+        .top-nav a:hover {
+            color: #4CAF50;
+        }
+
+        .main-nav {
+            background-color: #1a1a1a;
+            padding: 15px 0;
+        }
+
+        .main-nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #4CAF50;
+        }
+
+        .nav-menu a::after {
+            content: '▼';
+            font-size: 10px;
+            margin-left: 5px;
+            opacity: 0.7;
+        }
+
+        .special-designs {
+            color: #4CAF50 !important;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 120px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23006400" width="1200" height="600"/><circle fill="%23228B22" cx="600" cy="300" r="100" opacity="0.3"/><rect fill="%23ffffff" x="580" y="0" width="40" height="600" opacity="0.1"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .cta-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.3s;
+            font-weight: bold;
+        }
+
+        .cta-button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 60px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #f8f8f8;
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-title {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        /* Productos específicos */
+        .man-city { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240"><rect fill="%2387CEEB" width="200" height="240" rx="15"/><text x="100" y="50" text-anchor="middle" fill="white" font-size="12" font-weight="bold">ETIHAD</text><text x="100" y="65" text-anchor="middle" fill="white" font-size="8">AIRWAYS</text><circle cx="100" cy="100" r="25" fill="none" stroke="white" stroke-width="2"/><text x="100" y="105" text-anchor="middle" fill="white" font-size="8">MCFC</text></svg>'); }
+        
+        .arsenal { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240"><rect fill="%23DC143C" width="200" height="240" rx="15"/><rect fill="white" x="20" y="30" width="160" height="3"/><rect fill="white" x="20" y="40" width="160" height="3"/><text x="100" y="80" text-anchor="middle" fill="white" font-size="10" font-weight="bold">Emirates</text><text x="100" y="95" text-anchor="middle" fill="white" font-size="8">FLY BETTER</text></svg>'); }
+        
+        .barcelona { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240"><defs><linearGradient id="barca" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23004D98"/><stop offset="50%" style="stop-color:%23A50044"/><stop offset="100%" style="stop-color:%23004D98"/></linearGradient></defs><rect fill="url(%23barca)" width="200" height="240" rx="15"/><circle cx="100" cy="80" r="20" fill="none" stroke="gold" stroke-width="2"/><text x="100" y="85" text-anchor="middle" fill="gold" font-size="8">FCB</text></svg>'); }
+        
+        .barcelona-black { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240"><rect fill="%23000000" width="200" height="240" rx="15"/><rect fill="%23FF0000" x="180" y="0" width="20" height="240"/><rect fill="%230000FF" x="185" y="0" width="15" height="240"/><circle cx="100" cy="80" r="20" fill="none" stroke="%23FFD700" stroke-width="2"/><text x="100" y="85" text-anchor="middle" fill="%23FFD700" font-size="8">FCB</text></svg>'); }
+        
+        .real-madrid { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240"><rect fill="white" width="200" height="240" rx="15"/><text x="100" y="60" text-anchor="middle" fill="%23000" font-size="10" font-weight="bold">Emirates</text><text x="100" y="75" text-anchor="middle" fill="%23000" font-size="8">FLY BETTER</text><circle cx="100" cy="100" r="20" fill="none" stroke="%23FFD700" stroke-width="2"/><text x="100" y="105" text-anchor="middle" fill="%23000" font-size="8">RMCF</text></svg>'); }
+        
+        .spain { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240"><rect fill="%23FF0000" width="200" height="240" rx="15"/><rect fill="%23FFD700" x="0" y="80" width="200" height="80"/><text x="100" y="125" text-anchor="middle" fill="%23FF0000" font-size="12" font-weight="bold">ESPAÑA</text></svg>'); }
+        
+        .santos { background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240"><rect fill="white" width="200" height="240" rx="15"/><text x="100" y="70" text-anchor="middle" fill="%23000" font-size="10" font-weight="bold">BMG</text><text x="100" y="120" text-anchor="middle" fill="%23000" font-size="8">SANTOS</text></svg>'); }
+
+        /* Footer */
+        .footer {
+            background-color: #1a4d1a;
+            color: white;
+            padding: 60px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #4CAF50;
+            margin-bottom: 30px;
+        }
+
+        .social-icon {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            margin-bottom: 30px;
+            line-height: 50px;
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-links {
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: #4CAF50;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .payment-icon {
+            width: 40px;
+            height: 25px;
+            background-color: white;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .copyright {
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+            
+            .top-nav .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header fijo -->
+    <header class="header">
+        <nav class="top-nav">
+            <div class="container">
+                <div>
+                    <a href="#">Temporada 25/26</a>
+                    <a href="#">Talla niño 25/26</a>
+                    <a href="#">Pantalones cortos 25/26</a>
+                    <a href="#">Temporada 24/25</a>
+                    <a href="#">Selecciones Internacionales</a>
+                    <a href="#">Chaquetas</a>
+                    <a href="#">Talla niño</a>
+                    <a href="#">Retro</a>
+                </div>
+            </div>
+        </nav>
+        <nav class="main-nav">
+            <div class="container">
+                <a href="#" class="logo">TopFlex</a>
+                <ul class="nav-menu">
+                    <li><a href="#">Más</a></li>
+                    <li><a href="#">Zapatillas</a></li>
+                    <li><a href="#">NBA / BASKET</a></li>
+                    <li><a href="#">Camisetas Sorpresa</a></li>
+                    <li><a href="#">Streetwear</a></li>
+                    <li><a href="#">Camisetas manga larga</a></li>
+                    <li><a href="#">Pantalón Corto Fútbol</a></li>
+                    <li><a href="#">Camisetas Edición Final</a></li>
+                    <li><a href="#" class="special-designs">Diseños especiales</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p>PARA CONSULTAS RELACIONADAS CON CÓDIGOS DE SEGUIMIENTO CONTACTAR A NUESTRO CORREO ELECTRÓNICO</p>
+            <p>info@topflex-web.com</p>
+            <br>
+            <p>¡Pasión por el fútbol!</p>
+            <h1>Top Flex</h1>
+            <a href="#novedades" class="cta-button">COMPRAR AHORA</a>
+        </div>
+    </section>
+
+    <!-- Novedades -->
+    <section id="novedades" class="section">
+        <h2>Novedades</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image man-city"></div>
+                <div class="product-info">
+                    <div class="product-title">Camiseta Manchester City 25/26<br>1ª equipación</div>
+                    <div class="product-price">33,95 €</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image arsenal"></div>
+                <div class="product-info">
+                    <div class="product-title">Camiseta Arsenal 25/26 1ª<br>equipación</div>
+                    <div class="product-price">33,95 €</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image barcelona"></div>
+                <div class="product-info">
+                    <div class="product-title">Camiseta FC Barcelona retro x<br>Travis Scott</div>
+                    <div class="product-price">33,95 €</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image barcelona-black"></div>
+                <div class="product-info">
+                    <div class="product-title">Camiseta FC Barcelona 24/25 2ª<br>equipación x Travis Scott</div>
+                    <div class="product-price">33,95 €</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Ventas -->
+    <section class="section">
+        <h2>Top Ventas</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image barcelona-black"></div>
+                <div class="product-info">
+                    <div class="product-title">Camiseta FC Barcelona 24/25 2ª<br>equipación</div>
+                    <div class="product-price">33,95 €</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image real-madrid"></div>
+                <div class="product-info">
+                    <div class="product-title">Camiseta Real Madrid 24/25 1ª<br>equipación</div>
+                    <div class="product-price">33,95 €</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image spain"></div>
+                <div class="product-info">
+                    <div class="product-title">Camiseta España Eurocopa 2024<br>1ª equipación</div>
+                    <div class="product-price">33,95 €</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image santos"></div>
+                <div class="product-info">
+                    <div class="product-title">Camiseta Retro Santos 2012</div>
+                    <div class="product-price">33,95 €</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">TopFlex</div>
+            <a href="#" class="social-icon">📷</a>
+            <div style="margin-bottom: 20px;">
+                <a href="#" style="color: #4CAF50; text-decoration: none;">Preguntas frecuentes</a>
+            </div>
+            <div class="footer-links">
+                <a href="#">Terms and Conditions (T&C)</a>
+                <a href="#">Privacy policy</a>
+                <a href="#">Cookies</a>
+            </div>
+            <div class="payment-methods">
+                <div class="payment-icon">AMEX</div>
+                <div class="payment-icon">PAY</div>
+                <div class="payment-icon">GPay</div>
+                <div class="payment-icon">M</div>
+                <div class="payment-icon">MC</div>
+                <div class="payment-icon">PP</div>
+                <div class="payment-icon">SPay</div>
+                <div class="payment-icon">UP</div>
+                <div class="payment-icon">VISA</div>
+            </div>
+            <div class="copyright">Copyright © 2024 TopFlex</div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling para los enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Efecto hover para las tarjetas de productos
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Cambiar opacidad del header al hacer scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(26, 26, 26, 0.95)';
+            } else {
+                header.style.backgroundColor = '#1a1a1a';
+            }
+        });
+    </script>
+</body>
+</html>
